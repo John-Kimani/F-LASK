@@ -1,8 +1,12 @@
 from flask import Flask
 from config import Config
 from flask_bootstrap import Bootstrap
+from flask_sqlalchemy import SQLAlchemy
+from flask_migrate import Migrate
 
 bootstrap = Bootstrap()
+db = SQLAlchemy()
+migrate = Migrate()
 
 def createapp(config_class=Config):
     '''
@@ -13,6 +17,7 @@ def createapp(config_class=Config):
 
 
     bootstrap.init_app(app)
+    migrate.init_app(app, db)
 
     
     '''
